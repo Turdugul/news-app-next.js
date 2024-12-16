@@ -9,7 +9,7 @@ export default function Filter({ onFilter }: { onFilter: (category: string) => v
         <button
           key={news}
           onClick={() => onFilter(news)}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          className="px-4 py-2 bg-blue-500 text-white rounded dark:bg-slate-700  hover:bg-blue-700"
         >
           {news.charAt(0).toUpperCase() + news.slice(1)}
         </button>

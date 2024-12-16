@@ -17,7 +17,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ title, description, url, urlToImage
     description && description.length > 80 ? description.substring(0, 80) + '...' : description;
 
   return (
-    <div className="bg-white border rounded-lg shadow-md p-4 w-80 h-[400px]">
+    <div className="bg-white border rounded-lg shadow-md  dark:bg-slate-700 p-4 w-80 h-[400px]">
       {/* Render image only if urlToImage is available */}
       {urlToImage && (
         <img
