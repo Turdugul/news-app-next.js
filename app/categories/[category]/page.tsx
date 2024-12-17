@@ -5,6 +5,9 @@ interface NewsArticle {
   title: string;
   description: string;
   url: string;
+  urlToImage?: string;
+  publishedAt: string;
+
 }
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
@@ -20,6 +23,8 @@ export default async function CategoryPage({ params }: { params: { category: str
             title={article.title}
             description={article.description}
             url={article.url}
+            urlToImage={article.urlToImage}
+              publishedAt={article.publishedAt} 
           />
         ))}
       </div>

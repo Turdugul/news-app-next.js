@@ -1,62 +1,62 @@
 'use client';
 import React from 'react';
 
+// Utility to calculate relative time
+const getRelativeTime = (publishedAt: string): string => {
+  const now = new Date();
+  const publishedDate = new Date(publishedAt);
+  const diffInMs = now.getTime() - publishedDate.getTime();
+
+  const seconds = Math.floor(diffInMs / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (seconds < 60) return `${seconds} seconds ago`;
+  if (minutes < 60) return `${minutes} minutes ago`;
+  if (hours < 24) return `${hours} hours ago`;
+  return `${days} days ago`;
+};
+
 interface NewsCardProps {
   title: string;
   description: string;
   url: string;
   urlToImage?: string;
+  publishedAt: string; // Add publishedAt prop
 }
 
-const NewsCard: React.FC<NewsCardProps> = ({ title, description, url, urlToImage }) => {
-  // Truncate the title to 50 characters
-  const truncatedTitle = title.length > 50 ? title.substring(0, 50) + '...' : title;
-
-  // Truncate the description to 80 characters
-  const truncatedDescription =
-    description && description.length > 80 ? description.substring(0, 80) + '...' : description;
+const NewsCard: React.FC<NewsCardProps> = ({ title, description, url, urlToImage, publishedAt }) => {
+  const truncatedTitle = title.length > 80 ? title.substring(0, 80) + '...' : title;
+  const relativeTime = getRelativeTime(publishedAt);
 
   return (
-    <div className="bg-white border rounded-lg shadow-md  dark:bg-slate-700 p-4 w-80 h-[400px]">
+    <div className="bg-white border rounded-lg shadow-md dark:bg-stone-100 border-l-8 border-l-blue-700 dark:border-l-stone-950 p-4 w-96 h-[400px]">
       {/* Render image only if urlToImage is available */}
       {urlToImage && (
         <img
           src={urlToImage}
           alt={title}
-          className="w-full h-48 object-cover rounded-t-lg mb-4"
+          className="w-full h-48 object-cover rounded-t-lg mb-2"
         />
       )}
 
-      <h2 className="text-xl font-bold overflow-hidden text-ellipsis" style={{ WebkitLineClamp: 2 }}>
+      <h2 className="text-lg font-semibold overflow-hidden text-ellipsis h-24" style={{ WebkitLineClamp: 2 }}>
         {truncatedTitle}
       </h2>
-
-      {/* Render description if available */}
+      <p className="text-gray-500 text-sm mb-2">{relativeTime}</p>
       {description && (
-        <p className="text-gray-600 overflow-hidden text-ellipsis h-24 mt-2">
-          {truncatedDescription}
-          {/* Show "Read more" only if description is truncated */}
-          {description.length > 80 && (
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline ml-1"
-            >
-              Read more
-            </a>
-          )}
-        </p>
-      )}
-
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-blue-500 hover:underline mt-2 inline-block"
-      >
-        Read full article
-      </a>
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-600 overflow-hidden text-ellipsis h-14 mt-2 block hover:underline"
+  >
+    {description.length > 80
+      ? `${description.substring(0, 80)}...`
+      : description}
+  </a>
+)}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 'use client';
 
 export default function Filter({ onFilter }: { onFilter: (category: string) => void }) {
-  const categories = ['general', 'business', 'technology', 'health', 'science'];
+  const categories = ['all', 'business', 'technology', 'health', 'science'];
 
   return (
     <div className="flex space-x-4 p-4">
