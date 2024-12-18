@@ -1,3 +1,6 @@
+
+'use client'
+
 import Link from 'next/link';
 import DarkModeToggle from './DarkModeToggle'; // Import the DarkModeToggle component
 
@@ -10,13 +13,13 @@ export default function Header() {
           <Link href="/" className="px-3 hover:underline">
             Home
           </Link> 
-          <Link href="/categories" className="px-3 hover:underline">
-            Categories
-          </Link>
-          {/* Dark Mode Toggle Button */}
           <DarkModeToggle />
         </nav>
       </div>
     </header>
   );
 }
+
+
+
+

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-// Utility to calculate relative time
+
 const getRelativeTime = (publishedAt: string): string => {
   const now = new Date();
   const publishedDate = new Date(publishedAt);

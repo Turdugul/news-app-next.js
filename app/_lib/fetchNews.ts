@@ -3,7 +3,8 @@ export const fetchNews = async (category: string) => {
   const baseUrl = `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}`;
 
   if (category === 'all') {
-    const categories = ['general', 'business', 'technology', 'health', 'science'];
+    const categories = ['general', 'business', 'technology', 'health', 'science', 'entertainment', 'sports',];
+
     const maxAttempts = 3;
 
     const fetchCategoryNews = async (cat: string) => {
