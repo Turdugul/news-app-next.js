@@ -43,7 +43,7 @@ const NewsDashboard: React.FC = () => {
   }, [category]);
 
   return (
-    <main className="container w-full h-auto">
+    <main className="container w-full h-auto pb-20">
       <Filter onFilter={setCategory} />
       {loading ? (
         <p className="text-center">Loading...</p>
