@@ -38,4 +38,3 @@ export default function Filter({ onFilter }: { onFilter: (category: string) => v
     </div>
   );
 }
-

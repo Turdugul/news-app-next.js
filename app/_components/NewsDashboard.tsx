@@ -8,13 +8,13 @@ interface Article {
   title: string;
   description: string;
   url: string;
-  urlToImage?: string; // Optional image field
-  publishedAt: string; // Include publishedAt field
+  urlToImage?: string;
+  publishedAt: string;
 }
 
 const NewsDashboard: React.FC = () => {
   const [category, setCategory] = useState<string>('all');
-  const [news, setNews] = useState<Article[]>([]); // Properly typed
+  const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const NewsDashboard: React.FC = () => {
               description={article.description}
               url={article.url}
               urlToImage={article.urlToImage}
-              publishedAt={article.publishedAt} 
+              publishedAt={article.publishedAt}
             />
           ))}
         </div>
